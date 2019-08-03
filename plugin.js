@@ -35,20 +35,23 @@ function plugin(root) {
   const control = createControl();
   root.append(control);
 
-  after.style.clipPath = getClipPath(START_POSITION);
-  control.style.left = `${START_POSITION}%`;
+  function setPos(x) {
+    after.style.clipPath = getClipPath(x);
+    after.style.webkitClipPath = getClipPath(x);
+    control.style.left = `${x}%`;
+  }
 
-  control.addEventListener('mousedown', function() {
+  setPos(START_POSITION);
+
+  control.addEventListener('mousedown', function(event) {
+    event.preventDefault();
     moving = true;
   });
 
   root.addEventListener('mousemove', function(event) {
     if (!moving) return;
     event.preventDefault();
-    const x = event.clientX * 100 / window.innerWidth;
-
-    after.style.clipPath = getClipPath(x);
-    control.style.left = `${x}%`;
+    setPos(event.clientX * 100 / window.innerWidth);
   });
 
   root.addEventListener('mouseup', function() {
