@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Before & After</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="root">
+    <img src="images/before.jpg" decoding="async" alt="before">
+    <img src="images/after.jpg" decoding="async" alt="after">
+  </div>
+  <div class="author">
+    Images author:
+    <a href="https://github.com/qsedftghk" target="_blank">qsedftghk</a>
+  </div>
+  <script type="module">
+    import plugin from './plugin.js';
+    plugin(document.getElementById('root'));
+  </script>
+</body>
+</html>
